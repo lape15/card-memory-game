@@ -1,0 +1,3 @@
+const cardArray = ['♥', '♤', '◇', '♣', '🂭', '🂫'];
+
+export { cardArray };
