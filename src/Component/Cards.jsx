@@ -31,8 +31,6 @@ const Cards = () => {
         if (score === 8) {
           setBanner(true)
         }
-
-        console.log(score)
       } else {
         setTimeout(resetCards, 2000)
       }
