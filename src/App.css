@@ -56,6 +56,7 @@ button {
   outline: none;
   cursor: pointer;
   letter-spacing: 1px;
+  margin-right: 8px;
 }
 
 .card {
