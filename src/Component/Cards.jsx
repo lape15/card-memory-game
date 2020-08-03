@@ -8,6 +8,9 @@ const Cards = () => {
   const [solved, setSolved] = useState([])
   const [disabled, setDisabled] = useState(false)
   const [baner, setBanner] = useState(false)
+  const [score, setScore] = useState(1)
+  const [seconds, setSeconds] = useState(60)
+  const [isActive, setIsActive] = useState(false)
 
   useEffect(() => {
     setCards(initalCards())
@@ -24,7 +27,12 @@ const Cards = () => {
       if (isMatch(id)) {
         setSolved([...solved, flipped[0], id])
         resetCards()
-        setBanner(true)
+        setScore(score + 1)
+        if (score === 8) {
+          setBanner(true)
+        }
+
+        console.log(score)
       } else {
         setTimeout(resetCards, 2000)
       }
@@ -36,7 +44,6 @@ const Cards = () => {
   const isMatch = (id) => {
     const clickedCard = cards.find((card) => id === card.id)
     const flippedCard = cards.find((card) => flipped[0] === card.id)
-
     return flippedCard.type === clickedCard.type
   }
 
@@ -44,10 +51,36 @@ const Cards = () => {
     setFlipped([])
     setDisabled(false)
   }
+  function toggle() {
+    setIsActive(!isActive)
+  }
+
+  useEffect(() => {
+    let interval = null
+    if (isActive) {
+      interval = setTimeout(() => {
+        setSeconds((seconds) => seconds - 1)
+      }, 1000)
+    }
+    if (seconds === 0) {
+      clearInterval(interval)
+    }
+    return () => clearInterval(interval)
+  }, [isActive, seconds])
 
   return (
     <div className="wrapper">
-      {baner ? console.log('You won') : console.log('bleh')}
+      {seconds === 0 ? (
+        <div className="over">GameOver. Refresh to start over</div>
+      ) : null}
+      {baner ? <div className="over">You win. Refresh to startover</div> : null}
+      <div className="timer-box">
+        <div className="timer">{seconds}s </div>{' '}
+        <div className="btn-box">
+          <button onClick={toggle}>Start</button>
+        </div>
+      </div>
+
       {cards.length > 0
         ? cards.map((card) => {
             return (

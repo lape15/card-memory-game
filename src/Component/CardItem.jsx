@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const CardItem = ({ card, handleFlipped, flipped, disabled, solved }) => {
   return (
