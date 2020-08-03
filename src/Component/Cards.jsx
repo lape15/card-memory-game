@@ -22,9 +22,6 @@ const Cards = () => {
   }, [])
 
   const handleFlipped = (id) => {
-    // if (!easy || !medium || !hard) {
-    //   setDisabled(true)
-    // }
     setDisabled(true)
     if (easy || medium || hard) {
       setDisabled(false)
