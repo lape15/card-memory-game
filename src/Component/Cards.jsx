@@ -22,26 +22,32 @@ const Cards = () => {
   }, [])
 
   const handleFlipped = (id) => {
+    // if (!easy || !medium || !hard) {
+    //   setDisabled(true)
+    // }
     setDisabled(true)
-    if (flipped.length === 0) {
-      setFlipped([id])
+    if (easy || medium || hard) {
       setDisabled(false)
-    } else {
-      if (similarCardClicked(id)) return
-      setFlipped([flipped[0], id])
-      if (isMatch(id)) {
-        setSolved([...solved, flipped[0], id])
-        resetCards()
-        setScore(score + 1)
-        if (score === 8) {
-          setBanner(true)
+      if (flipped.length === 0) {
+        setFlipped([id])
+        setDisabled(false)
+      } else {
+        if (similarCardClicked(id)) return
+        setFlipped([flipped[0], id])
+        if (isMatch(id)) {
+          setSolved([...solved, flipped[0], id])
+          resetCards()
+          setScore(score + 1)
+          if (score === 8) {
+            setBanner(true)
+          }
+        } else if (easy) {
+          setTimeout(resetCards, 2000)
+        } else if (medium) {
+          setTimeout(resetCards, 1000)
+        } else if (hard) {
+          setTimeout(resetCards, 500)
         }
-      } else if (easy) {
-        setTimeout(resetCards, 2000)
-      } else if (medium) {
-        setTimeout(resetCards, 1000)
-      } else if (hard) {
-        setTimeout(resetCards, 500)
       }
     }
   }
