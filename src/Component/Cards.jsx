@@ -112,7 +112,7 @@ const Cards = () => {
       clearInterval(hard)
     }
   }, [isActive, seconds, medium, easy, mediumSeconds, hard, hardSeconds, baner])
-  console.log('This is the' + score)
+
   return (
     <div className="wrapper">
       {mediumSeconds === 0 || seconds === 0 || hardSeconds === 0 ? (
