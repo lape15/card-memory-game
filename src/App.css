@@ -13,7 +13,7 @@
 .over {
   border: 1px solid #fb5263;
   width: 90%;
-  height: 70%;
+  min-height: 100%;
   position: absolute;
   left: 70px;
   right: 50px;
