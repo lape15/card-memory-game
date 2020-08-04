@@ -78,6 +78,7 @@ button {
   transition: all ease 0.2s;
   background: url(./assets/images.jpg) no-repeat center;
   color: transparent;
+  transform: rotateY(180deg);
 }
 
 .card span {
