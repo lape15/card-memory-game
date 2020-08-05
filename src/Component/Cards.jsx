@@ -113,10 +113,19 @@ const Cards = () => {
     }
   }, [isActive, seconds, medium, easy, mediumSeconds, hard, hardSeconds, baner])
 
+  const reLoad = () => {
+    window.location.reload(true)
+  }
   return (
     <div className="wrapper">
       {mediumSeconds === 0 || seconds === 0 || hardSeconds === 0 ? (
-        <div className="over">GameOver. Refresh to start over</div>
+        <div className="over">
+          Gameover{' '}
+          <span role="img" aria-label="crying-face">
+            😢{' '}
+          </span>{' '}
+          <button onClick={reLoad}>Start over</button>
+        </div>
       ) : null}
       {baner ? <div className="over">You win. Refresh to startover</div> : null}
       <div className="timer-box">
